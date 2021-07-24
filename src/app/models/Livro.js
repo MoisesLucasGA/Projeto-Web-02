@@ -13,3 +13,4 @@ class Livro extends Model{
         })
     }
 }
+export default Livro

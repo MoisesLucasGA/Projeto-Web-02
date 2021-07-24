@@ -1,14 +1,14 @@
 import Sequelize, { Model } from 'sequelize'
 
-class Autor extends Model{
+class Editora extends Model{
     static init(sequelize){
         super.init({
             nome : Sequelize.STRING,
             descricao : Sequelize.STRING,
         },{
             sequelize,
-            tableName : 'autores'
+            tableName : 'editoras'
         })
     }
 }
-export default Autor
+export default Editora
