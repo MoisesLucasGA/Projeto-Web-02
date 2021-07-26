@@ -40,7 +40,7 @@ routes.delete('/livro/:id', livro.delete)
 routes.get('/livro-genero/:genero', livro.genero)
 
 routes.get('/', (req,res) => {
-    res.json({message: 'Salveeeee!!!'})
+    res.json({message: 'Olá!!!'})
 })
 
 export default routes
