@@ -12,5 +12,10 @@ class Livro extends Model{
             sequelize,
         })
     }
+
+    static associate(models){
+        this.belongsTo(models.Autor, {foreignKey : 'autor_id'})
+        this.belongsTo(models.Editora, {foreignKey : 'editora_id'})
+    }
 }
 export default Livro

@@ -1,4 +1,5 @@
 import Editora from "../models/Editora"
+import Livro from "../models/Livro"
 class EditoraController{
 
     async index(req,res){
@@ -23,6 +24,25 @@ class EditoraController{
             console.log(error)
         }
     }
+
+    async livros(req,res){
+        try {
+            const id = parseInt(req.params.id)
+            const editora = await Editora.findByPk(id,{
+                include : [{
+                    model : Livro,
+                    attributes : {
+                        exclude : ['id','sinopse','edicao','genero','ano_publicacao','createdAt','updatedAt','AutorId','EditoraId']
+                    }
+                }]
+            })
+            const status = editora ? 200 : 404
+            return res.status(status).json(editora)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     async create(req,res){
         try {
             const {nome, descricao} = req.body

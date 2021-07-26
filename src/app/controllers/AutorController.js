@@ -1,4 +1,5 @@
 import Autor from "../models/Autor"
+import Livro from "../models/Livro"
 class AutorController{
 
     async index(req,res){
@@ -21,6 +22,24 @@ class AutorController{
             return res.status(status).json(autor)
         } catch (error) {
             console.log(error)
+        }
+    }
+
+    async livros(req,res){
+        try {
+            const id = parseInt(req.params.id)
+            const autor = await Autor.findByPk(id,{
+                include : [{
+                    model : Livro,
+                    attributes : {
+                        exclude : ['id','sinopse','edicao','genero','ano_publicacao','createdAt','updatedAt','AutorId','EditoraId']
+                    }
+                }]
+            })
+            const status = autor ? 200 : 404
+            return res.status(status).json(autor)
+        } catch (error) {
+            console.log(error);
         }
     }
     async create(req,res){

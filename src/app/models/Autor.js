@@ -10,5 +10,9 @@ class Autor extends Model{
             tableName : 'autores'
         })
     }
+
+    static associate(models){
+        this.hasMany(models.Livro)
+    }
 }
 export default Autor

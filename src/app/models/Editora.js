@@ -10,5 +10,9 @@ class Editora extends Model{
             tableName : 'editoras'
         })
     }
+
+    static associate(models){
+        this.hasMany(models.Livro)
+    }
 }
 export default Editora

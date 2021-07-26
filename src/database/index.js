@@ -3,15 +3,16 @@ import config from "../config/database"
 import Usuario from "../app/models/Usuario"
 import Autor from "../app/models/Autor"
 import Editora from "../app/models/Editora"
+import Livro from "../app/models/Livro"
 
-const models = [Usuario,Autor,Editora]
+const models = [Usuario,Autor,Editora,Livro]
 
 class Database{
     constructor(){
         this.connection = new Sequelize(config)
 
         this.init()
-        //this.associate()
+        this.associate()
     }
 
     init(){
